@@ -1,58 +1,44 @@
-body {
-  font-family: sans-serif;
-  background: #111;
-  color: #eee;
-  padding: 20px;
-}
+// Video mapping per numero
+const videoMap = {
+  40: { id: "oi4pK6h_PPA", thumbnail: "https://img.youtube.com/vi/oi4pK6h_PPA/maxresdefault.jpg" },
+  44: { id: "O5gU7n_3EUg", thumbnail: "https://img.youtube.com/vi/O5gU7n_3EUg/maxresdefault.jpg" },
+  // aggiungi qui i tuoi
+};
 
-#app {
-  max-width: 400px;
-  margin: auto;
-}
+document.getElementById("loadVideo").addEventListener("click", () => {
+  const number = document.getElementById("numberInput").value;
+  const wrapper = document.getElementById("videoWrapper");
 
-#numberInput {
-  width: 100%;
-  padding: 12px;
-  font-size: 18px;
-  border-radius: 8px;
-  border: none;
-  margin-bottom: 10px;
-}
+  wrapper.innerHTML = ""; // pulizia
 
-#loadVideo {
-  width: 100%;
-  padding: 12px;
-  background: #444;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-}
+  if (!videoMap[number]) {
+    wrapper.innerHTML = "<p>No video mapped for this number.</p>";
+    return;
+  }
 
-#videoWrapper {
-  margin-top: 20px;
-}
+  const video = videoMap[number];
 
-/* ---- VIDEO CONTAINER 9:16 ---- */
-.video-container {
-  position: relative;
-  width: 100%;
-  padding-top: 177.77%; /* 9:16 ratio */
-  background: #000;
-  border-radius: 12px;
-  overflow: hidden;
-  cursor: pointer;
-}
+  const container = document.createElement("div");
+  container.className = "video-container";
 
-.video-container iframe,
-.video-container img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+  container.innerHTML = `
+    <img src="${video.thumbnail}" alt="Thumbnail" />
+  `;
+
+  // Click → video autoplay
+  container.addEventListener("click", () => {
+    container.innerHTML = `
+      <iframe
+        src="https://www.youtube.com/embed/${video.id}?autoplay=1&rel=0&modestbranding=1&showinfo=0"
+        frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    `;
+  });
+
+  wrapper.appendChild(container);
+});
+
 
 
