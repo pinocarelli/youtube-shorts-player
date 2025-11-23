@@ -1,60 +1,24 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>YouTube Shorts Player 9:16</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background: #000;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .video-container {
-      position: relative;
-      width: 200px;
-      height: 355px; /* 9:16 ratio */
-      margin: 10px 0;
-      cursor: pointer;
-      overflow: hidden;
-      border-radius: 10px;
-    }
-
-    .video-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .play-button {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 50px;
-      height: 50px;
-      background: rgba(255,0,0,0.8);
-      clip-path: polygon(20% 15%, 80% 50%, 20% 85%);
-    }
-
-    .title {
-      text-align: center;
-      margin-top: 5px;
-      font-size: 1em;
-      max-width: 200px;
-      word-wrap: break-word;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Silent Codes Player</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="videos"></div>
+  <div id="app">
+    <h1>Silent Codes Player</h1>
+
+    <input id="numberInput" type="number" placeholder="Enter number..." />
+    <button id="loadVideo">Load Video</button>
+
+    <div id="videoWrapper"></div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
