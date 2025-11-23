@@ -4,11 +4,54 @@
   <meta charset="UTF-8">
   <title>YouTube Shorts Player 9:16</title>
   <style>
-    body { font-family: sans-serif; background: #000; color: #fff; display: flex; flex-wrap: wrap; justify-content: center; }
-    .video-container { position: relative; width: 200px; height: 355px; margin: 10px; cursor: pointer; overflow: hidden; border-radius: 10px; }
-    .video-container img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .play-button { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50px; height: 50px; background: rgba(255,0,0,0.8); clip-path: polygon(20% 15%, 80% 50%, 20% 85%); }
-    .title { text-align: center; margin-top: 5px; font-size: 0.9em; }
+    body { 
+      font-family: sans-serif; 
+      background: #000; 
+      color: #fff; 
+      margin: 20px; 
+    }
+
+    #videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      justify-items: center;
+    }
+
+    .video-container { 
+      position: relative; 
+      width: 200px; 
+      height: 355px; 
+      cursor: pointer; 
+      overflow: hidden; 
+      border-radius: 10px; 
+    }
+
+    .video-container img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      display: block; 
+    }
+
+    .play-button { 
+      position: absolute; 
+      top: 50%; 
+      left: 50%; 
+      transform: translate(-50%, -50%); 
+      width: 50px; 
+      height: 50px; 
+      background: rgba(255,0,0,0.8); 
+      clip-path: polygon(20% 15%, 80% 50%, 20% 85%); 
+    }
+
+    .title { 
+      text-align: center; 
+      margin-top: 5px; 
+      font-size: 0.9em; 
+      max-width: 200px;
+      word-wrap: break-word;
+    }
   </style>
 </head>
 <body>
@@ -16,3 +59,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
