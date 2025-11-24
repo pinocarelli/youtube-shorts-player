@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube Short Player</title>
+</head>
+<body style="margin:0; display:flex; justify-content:center; align-items:center; height:100vh; background:black;">
+
+<div id="video-wrapper" style="position: relative; width:360px; height:640px; overflow:hidden;">
+  <iframe id="yt-player"
+          width="360"
+          height="640"
+          src=""
+          frameborder="0"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          style="display: block; pointer-events: none;">
+  </iframe>
+  <div id="fake-play" 
+       style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+              width: 80px; height: 80px; background: red; border-radius: 50%; 
+              display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;">
+    ▶
+  </div>
+</div>
+
+<script>
+  // Prende l'ID video dalla query string
+  const params = new URLSearchParams(window.location.search);
+  const videoId = params.get('videoId');
+  const iframe = document.getElementById("yt-player");
+  const playButton = document.getElementById("fake-play");
+
+  function playVideo() {
+    iframe.src = `https://pinocarelli.github.io/youtube-shorts-player/?id=${videoId}&autoplay=1`;
+    playButton.style.display = "none";
+    iframe.style.pointerEvents = "auto";
+  }
+
+  playButton.addEventListener("click", playVideo);
+
+  if(videoId) {
+    playVideo();
+  }
+</script>
+
+</body>
+</html>
